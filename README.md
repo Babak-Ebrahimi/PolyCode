@@ -1,4 +1,3 @@
-# One is Plenty: A Polymorphic Feature Interpreter for Immutable Heterogeneous Collaborative Perception [CVPR 2025]
 
 This is the official implementation of MDPI2025 paper ["Extensible Heterogeneous Collaborative Perception in
 Autonomous Vehicles with Codebook Compression"]().
