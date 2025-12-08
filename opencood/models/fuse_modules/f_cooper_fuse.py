@@ -13,6 +13,8 @@ import torch.nn as nn
 class SpatialFusion(nn.Module):
     def __init__(self):
         super(SpatialFusion, self).__init__()
+        print('-------------models/fuse_modules/f_cooper_fuse.py SpatialFusion class')
+
 
     def regroup(self, x, record_len):
         cum_sum_len = torch.cumsum(record_len, dim=0)
@@ -33,6 +35,7 @@ class SpatialFusion(nn.Module):
 class fcooper(nn.Module):
     def __init__(self,args) -> None:
         super(fcooper,self).__init__()
+        print('-------------models/fuse_modules/f_cooper_fuse.py fcooper class')
         self.model=SpatialFusion()
         
     def forward(self,x):

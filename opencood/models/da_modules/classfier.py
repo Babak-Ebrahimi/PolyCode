@@ -16,6 +16,7 @@ class DAImgHead(nn.Module):
             USE_FPN (boolean): whether FPN feature extractor is used
         """
         super(DAImgHead, self).__init__()
+        print('-------------models/da_modules/classifier.py DAImgHead class')
 
         self.conv1_da = nn.Conv2d(in_channels, 512, kernel_size=1, stride=1)
         self.conv2_da = nn.Conv2d(512, 1, kernel_size=1, stride=1)

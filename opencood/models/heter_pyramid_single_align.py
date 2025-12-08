@@ -19,6 +19,7 @@ from opencood.utils.model_utils import check_trainable_module, fix_bn, unfix_bn
 class HeterPyramidSingleAlign(nn.Module):
     def __init__(self, args):
         super(HeterPyramidSingleAlign, self).__init__()
+        print('-------------models/heter_pyramid_single_align.py HeterPyramidSingleAlign class')
         modality_name_list = list(args.keys())
         modality_name_list = [x for x in modality_name_list if x.startswith("m") and x[1:].isdigit()] 
         self.modality_name_list = modality_name_list

@@ -36,6 +36,7 @@ class ScaledDotProductAttention(nn.Module):
 
     def __init__(self, dim):
         super(ScaledDotProductAttention, self).__init__()
+        print('-------------models/fuse_modules/self_attn.py ScaledDotProductAttention class')
         self.sqrt_dim = np.sqrt(dim)
 
     def forward(self, query, key, value):
@@ -48,6 +49,7 @@ class ScaledDotProductAttention(nn.Module):
 class AttFusion(nn.Module):
     def __init__(self, feature_dim):
         super(AttFusion, self).__init__()
+        print('-------------models/fuse_modules/self_attn.py AttFusion class')
         self.att = ScaledDotProductAttention(feature_dim)
 
     def forward(self, x, record_len, pairwise_t_matrix):

@@ -11,6 +11,7 @@ from opencood.loss.point_pillar_loss import PointPillarLoss
 class PointPillarDiscoNetLoss(PointPillarLoss):
     def __init__(self, args):
         super(PointPillarDiscoNetLoss, self).__init__(args)
+        print('-------------point_pillar_disconet_loss.py PointPillarDiscoNetLoss class')
         self.kd = args['kd']
 
     def forward(self, output_dict, target_dict):

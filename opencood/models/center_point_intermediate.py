@@ -15,6 +15,7 @@ from opencood.models.sub_modules.att_bev_backbone import AttBEVBackbone
 class CenterPointIntermediate(nn.Module):
     def __init__(self, args):
         super(CenterPointIntermediate, self).__init__()
+        print('-------------models/center_point_intermediate.py CenterPointIntermediate class')
 
         # PIllar VFE
         self.pillar_vfe = PillarVFE(args['pillar_vfe'],

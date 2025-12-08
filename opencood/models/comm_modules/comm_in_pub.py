@@ -45,6 +45,7 @@ def coords_bev_pos_emdbed(H_size, W_size, num_pos_feats):
 class ComminPub(nn.Module):
     def __init__(self, args, pub_codebook=None, init_codebook=None):
         super(ComminPub, self).__init__()
+        print('-------------models/comm_modules/comm_in_pub.py ComminPub class')
         
         self.num_codes = args['num_codes']
         self.dim_code = args['dim']

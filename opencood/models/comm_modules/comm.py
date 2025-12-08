@@ -14,6 +14,7 @@ from opencood.tools.feature_show import feature_show
 class Comm(nn.Module):
     def __init__(self, args):
         super(Comm, self).__init__()
+        print('-------------models/comm_modules/comm.py Comm class')
         
         self.num_codes = args['num_codes']
         self.dim_code = args['dim']

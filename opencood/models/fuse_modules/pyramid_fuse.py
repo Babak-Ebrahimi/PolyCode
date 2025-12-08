@@ -16,6 +16,7 @@ from opencood.visualization.debug_plot import plot_feature
 
 
 def weighted_fuse(x, score, record_len, affine_matrix, align_corners, warp = True):
+    print('-------------models/fuse_modules/pyramid_fuse.py weighted_fuse function')
     """
     Parameters
     ----------
@@ -79,6 +80,7 @@ class PyramidFusion(ResNetBEVBackbone):
         Do not downsample in the first layer.
         """
         super().__init__(model_cfg, input_channels)
+        print('-------------models/fuse_modules/pyramid_fuse.py PyramidFusion class')
         if model_cfg["resnext"]:
             Bottleneck.expansion = 1
             self.resnet = ResNetModified(Bottleneck, 

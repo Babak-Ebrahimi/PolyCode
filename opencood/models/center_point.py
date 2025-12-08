@@ -12,6 +12,7 @@ from opencood.models.sub_modules.downsample_conv import DownsampleConv
 class CenterPoint(nn.Module):
     def __init__(self, args):
         super(CenterPoint, self).__init__()
+        print('-------------models/center_point.py CenterPoint class')
 
         # PIllar VFE
         self.pillar_vfe = PillarVFE(args['pillar_vfe'],

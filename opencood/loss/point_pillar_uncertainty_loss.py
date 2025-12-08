@@ -16,6 +16,7 @@ from functools import partial
 class PointPillarUncertaintyLoss(PointPillarLoss):
     def __init__(self, args):
         super(PointPillarUncertaintyLoss, self).__init__(args)
+        print('-------------point_pillar_uncertainty_loss.py PointPillarUncertaintyLoss class')
         self.uncertainty = args['uncertainty']
         self.uncertainty_dim = args['uncertainty']['dim'] # 2 means x, y; 3 means x, y, yaw; 7 means x y z dh dw dl yaw
         self.unc_loss_func = KLLoss(args['uncertainty'])

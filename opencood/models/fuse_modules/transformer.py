@@ -13,6 +13,7 @@ class TransformerMessage(nn.Module):
                  in_channels=64,
                  trans_layer=[3]):
         super(TransformerMessage, self).__init__()
+        print('-------------models/fuse_modules/transformer.py TransformerMessage class')
         self.in_channels = in_channels
 
         self.trans_layer = trans_layer

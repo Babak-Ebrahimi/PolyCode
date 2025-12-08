@@ -20,6 +20,7 @@ from matplotlib import pyplot as plt
 class LiftSplatShootVoxel(nn.Module):
     def __init__(self, args): 
         super(LiftSplatShootVoxel, self).__init__()
+        print('-------------models/lift_splat_shoot_voxel.py LiftSplatShootVoxel class')
         self.grid_conf = args['grid_conf']   # 网格配置参数
         self.data_aug_conf = args['data_aug_conf']   # 数据增强配置参数
         self.bevout_feature = args['bevout_feature']

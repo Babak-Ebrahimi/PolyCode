@@ -1,6 +1,7 @@
 import torch
 import torch.nn as nn
 import math
+import sys
 
 from opencood.tools import train_utils
 from opencood.models.sub_modules.compressor import simple_align
@@ -17,6 +18,7 @@ from opencood.models.fuse_modules.fusion_in_one import CoBEVT
 
 
 torch.autograd.set_detect_anomaly(True)
+
 
 
 
@@ -140,12 +142,12 @@ class PolyInterStage1(nn.Module):
         self.encoder_q = train_utils.load_pretrained_model(
             args["encoder_q"]["saved_pth"], self.encoder_q
         )
-        self.encoder_k = train_utils.load_pretrained_submodule(    
-            args["encoder_k"]["saved_pth"], self.encoder_k, "encoder_m2" ## efficent-net是m2，resnet是m4, 其他都是encoder_k
-        )
-        # self.encoder_k = train_utils.load_pretrained_model(    
-        #     args["encoder_k"]["saved_pth"], self.encoder_k ## efficent-net是m2，resnet是m4, 其他都是encoder_k
+        # self.encoder_k = train_utils.load_pretrained_submodule(    
+        #     args["encoder_k"]["saved_pth"], self.encoder_k, "encoder_m2" ## efficent-net是m2，resnet是m4, 其他都是encoder_k
         # )
+        self.encoder_k = train_utils.load_pretrained_model(    
+            args["encoder_k"]["saved_pth"], self.encoder_k ## efficent-net是m2，resnet是m4, 其他都是encoder_k
+        )
         self.encoder_v = train_utils.load_pretrained_model(    
             args["encoder_v"]["saved_pth"], self.encoder_v
         )
@@ -290,8 +292,6 @@ class PolyInterStage1(nn.Module):
                 key = batch_dict_k["spatial_features_2d"]
             else:
                 key = batch_dict_k
-
-        
         
         if data_dict['selected_char'] == 'k':
             key = self.compressor_k(key) 
@@ -320,14 +320,19 @@ class PolyInterStage1(nn.Module):
         
         
         # channel
+        #print('-----------------------------------------channel selection--------------------------------------------')
         general_prompt_k = self.general_prompt_k.expand(key.size(0),-1,-1,-1)
         if data_dict['selected_char'] == 'k':
+
             prompts = torch.cat([specific_prompt_k, general_prompt_k],dim=1)
+
             key = self.channel_cross_attention(prompts, query, key, 'k')
             specific_prompt = key[:,:specific_prompt_k.size(1),:,:]
             general_prompt = key[:,specific_prompt_k.size(1):,:,:]
         elif data_dict['selected_char'] == 'v':
+
             prompts = torch.cat([specific_prompt_v, general_prompt_k],dim=1)
+
             key = self.channel_cross_attention(prompts, query, key, 'v')
             specific_prompt = key[:,:specific_prompt_v.size(1),:,:]
             general_prompt = key[:,specific_prompt_v.size(1):,:,:]
@@ -336,7 +341,6 @@ class PolyInterStage1(nn.Module):
         # spatial
         specific_prompt_out = self.transformer((specific_prompt+general_prompt)/2, query)  
 
-        
 
         # for style loss
         mean_k = torch.mean(specific_prompt_out.contiguous().view(specific_prompt_out.size(0), -1), dim=1, keepdim=False)

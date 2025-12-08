@@ -11,6 +11,7 @@ from opencood.loss.point_pillar_loss import sigmoid_focal_loss
 class NsdLoss(PointPillarPyramidLoss):
     def __init__(self, args):
         super().__init__(args)
+        print('-------------nsd_loss.py NsdLoss class')
         
         # # 默认不使用pub_codebook监督
         # self.pub_cb_supervise = False

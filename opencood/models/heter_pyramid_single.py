@@ -20,6 +20,7 @@ import matplotlib.pyplot as plt
 class HeterPyramidSingle(nn.Module):
     def __init__(self, args):
         super(HeterPyramidSingle, self).__init__()
+        print('-------------models/heter_pyramid_single.py HeterPyramidSingle class')
         modality_name_list = list(args.keys())
         modality_name_list = [x for x in modality_name_list if x.startswith("m") and x[1:].isdigit()] 
         self.modality_name_list = modality_name_list

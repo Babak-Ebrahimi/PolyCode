@@ -7,6 +7,7 @@ from icecream import ic
 class FpvrcnnLoss(nn.Module):
     def __init__(self, args):
         super(FpvrcnnLoss, self).__init__()
+        print('-------------fpvrcnn_loss.py FpvrcnnLoss class')
         self.ciassd_loss = CiassdLoss(args['stage1'])
         self.cls = args['stage2']['cls']
         self.reg = args['stage2']['reg']

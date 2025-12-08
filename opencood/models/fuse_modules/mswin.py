@@ -20,6 +20,7 @@ class BaseWindowAttention(nn.Module):
     def __init__(self, dim, heads, dim_head, drop_out, window_size,
                  relative_pos_embedding):
         super().__init__()
+        print('-------------models/fuse_modules/mswin.py BaseWindowAttention class')
         inner_dim = dim_head * heads
 
         self.heads = heads
@@ -84,6 +85,7 @@ class PyramidWindowAttention(nn.Module):
     def __init__(self, dim, heads, dim_heads, drop_out, window_size,
                  relative_pos_embedding, fuse_method='naive'):
         super().__init__()
+        print('-------------models/fuse_modules/mswin.py PyramidWindowAttention class')
 
         assert isinstance(window_size, list)
         assert isinstance(heads, list)

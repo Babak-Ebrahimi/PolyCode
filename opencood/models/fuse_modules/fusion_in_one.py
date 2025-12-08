@@ -38,6 +38,7 @@ class ScaledDotProductAttention(nn.Module):
     def __init__(self, dim):
         super(ScaledDotProductAttention, self).__init__()
         self.sqrt_dim = np.sqrt(dim)
+        print('-------------models/fuse_modules/fuse_in_one.py ScaledDotProductAttention class')
 
     def forward(self, query, key, value):
         score = torch.bmm(query, key.transpose(1, 2)) / self.sqrt_dim
@@ -88,6 +89,7 @@ def warp_feature(x, record_len, affine_matrix):
 class MaxFusion(nn.Module):
     def __init__(self):
         super(MaxFusion, self).__init__()
+        print('-------------models/fuse_modules/fuse_in_one.py MaxFusion class')
 
     def forward(self, x, record_len, affine_matrix):
         """
@@ -127,6 +129,7 @@ class MaxFusion(nn.Module):
 class AttFusion(nn.Module):
     def __init__(self, feature_dims):
         super(AttFusion, self).__init__()
+        print('-------------models/fuse_modules/fuse_in_one.py AttFusion class')
         self.att = ScaledDotProductAttention(feature_dims)
 
     def forward(self, xx, record_len, affine_matrix):
@@ -155,6 +158,7 @@ class DiscoFusion(nn.Module):
     def __init__(self, feature_dims):
         super(DiscoFusion, self).__init__()
         from opencood.models.fuse_modules.disco_fuse import PixelWeightLayer
+        print('-------------models/fuse_modules/fuse_in_one.py DiscoFusion class')
         self.pixel_weight_layer = PixelWeightLayer(feature_dims)
 
     def forward(self, xx, record_len, affine_matrix):
@@ -204,6 +208,7 @@ class DiscoFusion(nn.Module):
 class V2VNetFusion(nn.Module):
     def __init__(self, args):
         super(V2VNetFusion, self).__init__()
+        print('-------------models/fuse_modules/fuse_in_one.py V2VNetFusion class')
         from opencood.models.sub_modules.convgru import ConvGRU
         in_channels = args['in_channels']
         H, W = args['conv_gru']['H'], args['conv_gru']['W'] # remember to modify for v2xsim dataset
@@ -321,6 +326,7 @@ class V2VNetFusion(nn.Module):
 class V2XViTFusion(nn.Module):
     def __init__(self, args):
         super(V2XViTFusion, self).__init__()
+        print('-------------models/fuse_modules/fuse_in_one.py V2VViTFusion class')
         from opencood.models.sub_modules.v2xvit_basic import V2XTransformer
         self.fusion_net = V2XTransformer(args['transformer'])
 
@@ -375,6 +381,7 @@ class V2XViTFusion(nn.Module):
 class CoBEVT(nn.Module):
     def __init__(self, args):
         super(CoBEVT, self).__init__()
+        print('-------------models/fuse_modules/fuse_in_one.py CoBEVT class')
         from torch import nn
         from einops.layers.torch import Rearrange, Reduce
         from opencood.models.fuse_modules.swap_fusion_modules import SwapFusionBlockMask
@@ -463,6 +470,7 @@ class Where2commFusion(nn.Module):
     """
     def __init__(self, feature_dims):
         super().__init__()
+        print('-------------models/fuse_modules/fuse_in_one.py Where2commFusion class')
         from opencood.models.fuse_modules.where2comm_attn import EncodeLayer
         self.mha_fusion = EncodeLayer(feature_dims)
 
@@ -513,6 +521,7 @@ class Where2commFusion(nn.Module):
 class Who2comFusion(nn.Module):
     def __init__(self, feature_dims):
         super().__init__()
+        print('-------------models/fuse_modules/fuse_in_one.py Who2comFusion class')
         # use the non-learning attention for simplicity
         self.att = ScaledDotProductAttention(feature_dims)
         self.decode_layer = nn.Conv2d(feature_dims * 2, feature_dims, kernel_size=3, stride=1, padding=1)

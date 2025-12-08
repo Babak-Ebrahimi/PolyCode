@@ -35,6 +35,7 @@ class Attention(nn.Module):
             window_size=7
     ):
         super().__init__()
+        print('-------------models/fuse_modules/swap_fusion_modules.py Attention class')
         assert (dim % dim_head) == 0, \
             'dimension should be divisible by dimension per head'
 
@@ -142,6 +143,7 @@ class SwapFusionBlockMask(nn.Module):
                  agent_size,
                  drop_out):
         super(SwapFusionBlockMask, self).__init__()
+        print('-------------models/fuse_modules/swap_fusion_modules.py SwapFusionBlockMask class')
 
         self.window_size = window_size
 
@@ -205,6 +207,7 @@ class SwapFusionBlock(nn.Module):
                  agent_size,
                  drop_out):
         super(SwapFusionBlock, self).__init__()
+        print('-------------models/fuse_modules/swap_fusion_modules.py SwapFusionBlock class')
         # b = batch * max_cav
         self.block = nn.Sequential(
             Rearrange('b m d (x w1) (y w2) -> b m x y w1 w2 d',
@@ -236,6 +239,7 @@ class SwapFusionEncoder(nn.Module):
 
     def __init__(self, args):
         super(SwapFusionEncoder, self).__init__()
+        print('-------------models/fuse_modules/swap_fusion_modules.py SwapFusionEncoder class')
 
         self.layers = nn.ModuleList([])
         self.depth = args['depth']

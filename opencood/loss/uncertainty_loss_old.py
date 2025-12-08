@@ -29,6 +29,7 @@ class WeightedSmoothL1Loss(nn.Module):
                 Code-wise weights.
         """
         super(WeightedSmoothL1Loss, self).__init__()
+        print('-------------uncertainty_loss_old.py WeightedSmoothL1Loss class')
         self.beta = beta
         if code_weights is not None:
             self.code_weights = np.array(code_weights, dtype=np.float32)
@@ -76,6 +77,7 @@ class WeightedSmoothL1Loss(nn.Module):
 class KLLoss(nn.Module):
     def __init__(self, args):
         super(KLLoss, self).__init__()
+        print('-------------uncertainty_loss_old.py KLLoss class')
 
         self.angle_weight = args['angle_weight']
         self.uncertainty_dim = args['uncertainty_dim']

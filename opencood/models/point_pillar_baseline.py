@@ -19,6 +19,7 @@ class PointPillarBaseline(nn.Module):
     """
     def __init__(self, args):
         super(PointPillarBaseline, self).__init__()
+        print('-------------models/point_pillar_baseline.py PointPillarBaseline class')
 
         self.pillar_vfe = PillarVFE(args['pillar_vfe'],
                                     num_point_features=4,

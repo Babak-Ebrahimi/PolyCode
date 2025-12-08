@@ -16,6 +16,7 @@ from opencood.models.sub_modules.torch_transformation_utils import warp_affine_s
 class When2comFusion(nn.Module):
     def __init__(self, args):
         super(When2comFusion, self).__init__()
+        print('-------------models/fuse_modules/when2com_fuse.py When2comFusion class')
 
         self.discrete_ratio = args['voxel_size'][0]  
         self.downsample_rate = args['downsample_rate']  
@@ -143,6 +144,7 @@ class conv2DBatchNormRelu(nn.Module):
         is_batchnorm=True,
     ):
         super(conv2DBatchNormRelu, self).__init__()
+        print('-------------models/fuse_modules/when2com_fuse.py conv2DBatchNormRelu class')
 
         conv_mod = nn.Conv2d(
             int(in_channels),
@@ -176,6 +178,7 @@ class Sparsemax(nn.Module):
             dim (int, optional): The dimension over which to apply the sparsemax function.
         """
         super(Sparsemax, self).__init__()
+        print('-------------models/fuse_modules/when2com_fuse.py Sparsemax class')
 
         self.dim = -1 if dim is None else dim
 
@@ -237,6 +240,7 @@ class Sparsemax(nn.Module):
 class km_generator(nn.Module):
     def __init__(self, out_size=128, input_feat_h=25, input_feat_w=63):
         super(km_generator, self).__init__()
+        print('-------------models/fuse_modules/when2com_fuse.py km_generator class')
         # self.n_feat = int(256 * (input_feat_h//4 + 1) * (input_feat_w//4 + 1))
         self.n_feat = int(256 * input_feat_h * input_feat_w)
         self.fc = nn.Sequential(
@@ -253,6 +257,7 @@ class km_generator(nn.Module):
 class km_generator_v2(nn.Module):
     def __init__(self, out_size=128):
         super(km_generator_v2, self).__init__()
+        print('-------------models/fuse_modules/when2com_fuse.py km_generator_v2 class')
         # N, C = 256, H, W
         self.conv1 = conv2DBatchNormRelu(256, 128, k_size=3, stride=2, padding=1)
         self.avgp = nn.AdaptiveAvgPool2d((5, 7))
@@ -272,6 +277,7 @@ class km_generator_v2(nn.Module):
 class policy_net4(nn.Module):
     def __init__(self, in_channel):
         super(policy_net4, self).__init__()
+        print('-------------models/fuse_modules/when2com_fuse.py policy_net4 class')
         # Encoder
         # down 1 
         self.conv1 = conv2DBatchNormRelu(in_channel, 512, k_size=3, stride=1, padding=1)
@@ -295,6 +301,7 @@ class MIMOGeneralDotProductAttention(nn.Module):
 
     def __init__(self, query_size, key_size, warp_flag=True, attn_dropout=0.1):
         super().__init__()
+        print('-------------models/fuse_modules/when2com_fuse.py MIMOGeneralDotProductAttention class')
         self.sparsemax = Sparsemax(dim=1)
         self.softmax = nn.Softmax(dim=1)
         self.linear = nn.Linear(query_size, key_size)
@@ -342,6 +349,7 @@ class MIMOGeneralDotProductAttention(nn.Module):
 class AdditiveAttentin(nn.Module):
     def __init__(self, c_k, c_q):
         super().__init__()
+        print('-------------models/fuse_modules/when2com_fuse.py AdditiveAttentin class')
         # self.dropout = nn.Dropout(attn_dropout)
         self.softmax = nn.Softmax(dim=1)
         self.sparsemax = Sparsemax(dim=1)

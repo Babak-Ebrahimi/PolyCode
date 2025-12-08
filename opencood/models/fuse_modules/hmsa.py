@@ -8,6 +8,7 @@ class HGTCavAttention(nn.Module):
     def __init__(self, dim, heads, num_types=2,
                  num_relations=4, dim_head=64, dropout=0.1):
         super().__init__()
+        print('-------------models/fuse_modules/hmsa.py HGTCavAttention class')
         inner_dim = heads * dim_head
 
         self.heads = heads

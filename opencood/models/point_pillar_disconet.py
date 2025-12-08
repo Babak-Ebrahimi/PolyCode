@@ -19,6 +19,7 @@ from opencood.models.fuse_modules.fusion_in_one import DiscoFusion
 class PointPillarDiscoNet(nn.Module):
     def __init__(self, args):
         super(PointPillarDiscoNet, self).__init__()
+        print('-------------models/point_pillar_disconet.py PointPillarDisconet class')
         self.discrete_ratio = args['voxel_size'][0]
         # PIllar VFE
         self.pillar_vfe = PillarVFE(args['pillar_vfe'],

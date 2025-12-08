@@ -6,6 +6,7 @@ from opencood.models.fuse_modules.pyramid_fuse import PyramidFusion
 
 
 def build_fusion_net(fuion_net_args):
+    print('-------------models/fuse_modules/__init__.py build_fusion_net function')
     method = fuion_net_args['method']
     net_args = fuion_net_args['args']
     

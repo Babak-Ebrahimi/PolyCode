@@ -11,6 +11,7 @@ from opencood.utils.common_utils import torch_tensor_to_numpy
 
 
 def regroup(dense_feature, record_len, max_len):
+    print('-------------models/fuse_modules/fuse_utils.py regroup function')
     """
     Regroup the data based on the record_len.
     Parameters

@@ -11,6 +11,7 @@ from opencood.models.sub_modules.torch_transformation_utils import \
     warp_affine_simple
 from opencood.utils.transformation_utils import normalize_pairwise_tfm
 from opencood.models.fuse_modules.fusion_in_one import CoBEVT
+import sys
 
 
 class PolyInterStage2(nn.Module):
@@ -160,9 +161,11 @@ class PolyInterStage2(nn.Module):
                 key = batch_dict_k
         
         # dimension alignment
+        #self.visualization(key[0], save_path='./key1_beforecompressor_neighbor_sd1.png', pooling='max')
         key = self.compressor_k(key)
         specific_prompt_k = self.specific_prompt_k.expand(key.size(0),-1,-1,-1)
         specific_prompt_k = self.compressor_k.conv_downsampling(specific_prompt_k)
+        #self.visualization(key[0], save_path='./key2_aftercompressor_neighbor_sd1.png', pooling='max')
 
         ### project neb to ego coordinate
         i = 0
@@ -175,13 +178,22 @@ class PolyInterStage2(nn.Module):
             projected_key.append(temp)
         key = torch.cat(projected_key)
 
+        #self.visualization(key[0], save_path='./key3_projected_neighbor_sd1.png', pooling='max')
+        #self.visualization(query[0], save_path='./query_ego_pp8.png', pooling='max')
+
         # channel and spatial
         general_prompt_k = self.general_prompt_k.expand(key.size(0),-1,-1,-1)
+
+        #self.visualization(specific_prompt_k[0], save_path='./specific_prompt.png', pooling='max')
+        #self.visualization(general_prompt_k[0], save_path='./general_prompt.png', pooling='max')
         prompts = torch.cat([specific_prompt_k, general_prompt_k],dim=1)
         key = self.channel_cross_attention(prompts, query, key, 'k')
         specific_prompt = key[:,:specific_prompt_k.size(1),:,:]
+        #self.visualization(specific_prompt[0], save_path='./specific_prompt_crossattention_output.png', pooling='max')
         general_prompt = key[:,specific_prompt_k.size(1):,:,:]
-        specific_prompt_out = self.transformer(specific_prompt, query)  
+        specific_prompt_out = self.transformer(specific_prompt, query)
+        #self.visualization(general_prompt[0], save_path='./general_prompt_transformer_output.png', pooling='max')
+        #self.visualization(specific_prompt_out[0], save_path='./specific_prompt_transformer_output.png', pooling='max')
 
         
         
@@ -220,6 +232,10 @@ class PolyInterStage2(nn.Module):
             identical_matrix = torch.tile(torch.eye(4), (ego2neb_t_matrix.shape[0], 5, 5, 1, 1))
             identical_matrix = normalize_pairwise_tfm(identical_matrix, self.H, self.W, self.fake_voxel_size)
             out = self.fusion_net(spatial_features_2d, record_len, identical_matrix)
+
+        #self.visualization(out[0], save_path='./final_output.png', pooling='max')
+
+
 
         # detection
         output_dict = self.detect_head(out)

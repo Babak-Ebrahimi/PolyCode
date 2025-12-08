@@ -11,6 +11,7 @@ from opencood.models.sub_modules.cia_ssd_utils import SSFA, Head
 class CIASSD(nn.Module):
     def __init__(self, args):
         super(CIASSD, self).__init__()
+        print('-------------models/ciassd.py CIASSD class')
         lidar_range = np.array(args['lidar_range'])
         grid_size = np.round((lidar_range[3:6] - lidar_range[:3]) /
                              np.array(args['voxel_size'])).astype(np.int64)

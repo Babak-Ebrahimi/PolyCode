@@ -14,6 +14,7 @@ from opencood.utils.model_utils import weight_init
 class PointPillarUncertainty(nn.Module):
     def __init__(self, args):
         super(PointPillarUncertainty, self).__init__()
+        print('-------------models/point_pillar_uncertainty.py PointPillarUncertainty class')
 
         # PIllar VFE
         self.pillar_vfe = PillarVFE(args['pillar_vfe'],

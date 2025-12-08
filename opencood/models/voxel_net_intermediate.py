@@ -61,6 +61,7 @@ class NaiveFusion(nn.Module):
 class VoxelNetIntermediate(nn.Module):
     def __init__(self, args):
         super(VoxelNetIntermediate, self).__init__()
+        print('-------------models/voxel_net_intermediate.py VoxelNetIntermediate class')
         self.svfe = PillarVFE(args['pillar_vfe'],
                               num_point_features=4,
                               voxel_size=args['voxel_size'],

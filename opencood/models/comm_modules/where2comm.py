@@ -9,6 +9,7 @@ import numpy as np
 class Communication(nn.Module):
     def __init__(self, args):
         super(Communication, self).__init__()
+        print('-------------models/comm_modules/where2comm.py Communication class')
         
         self.smooth = False
         self.thre = args['thre']

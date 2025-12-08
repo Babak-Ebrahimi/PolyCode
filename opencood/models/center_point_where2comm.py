@@ -12,6 +12,7 @@ import torch
 class CenterPointWhere2comm(nn.Module):
     def __init__(self, args):
         super(CenterPointWhere2comm, self).__init__()
+        print('-------------models/center_point_where2comm.py CenterPointWhere2comm class')
 
         # PIllar VFE
         self.pillar_vfe = PillarVFE(args['pillar_vfe'],

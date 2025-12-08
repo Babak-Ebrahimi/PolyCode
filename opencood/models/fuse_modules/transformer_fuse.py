@@ -35,6 +35,7 @@ from matplotlib import pyplot as plt
 class EncodeLayer(nn.Module):
     def __init__(self, channels, n_head=8, dropout=0):
         super(EncodeLayer, self).__init__()
+        print('-------------models/fuse_modules/transformer_fuse.py EncodeLayer class')
         self.attn = nn.MultiheadAttention(channels, n_head, dropout)
         self.linear1 = nn.Linear(channels, channels)
         self.linear2 = nn.Linear(channels, channels)
@@ -77,6 +78,7 @@ class EncodeLayer(nn.Module):
 class TransformerFusion(nn.Module):
     def __init__(self, args):
         super(TransformerFusion, self).__init__()
+        print('-------------models/fuse_modules/transformer_fuse.py TransformerFusion class')
         
         self.channels = args['in_channels']
         self.n_head = args['n_head']

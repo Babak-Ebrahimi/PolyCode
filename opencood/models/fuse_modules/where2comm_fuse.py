@@ -14,6 +14,7 @@ from opencood.models.fuse_modules.self_attn import ScaledDotProductAttention
 class Communication(nn.Module):
     def __init__(self, args):
         super(Communication, self).__init__()
+        print('-------------models/fuse_modules/where2comm_fuse.py Communication class')
         # Threshold of objectiveness
         self.threshold = args['threshold']
         if 'gaussian_smooth' in args:
@@ -83,6 +84,7 @@ class Communication(nn.Module):
 class AttentionFusion(nn.Module):
     def __init__(self, feature_dim):
         super(AttentionFusion, self).__init__()
+        print('-------------models/fuse_modules/where2comm_fuse.py AttentionFusion class')
         self.att = ScaledDotProductAttention(feature_dim)
 
     def forward(self, x):
@@ -96,6 +98,7 @@ class AttentionFusion(nn.Module):
 class Where2comm(nn.Module):
     def __init__(self, args):
         super(Where2comm, self).__init__()
+        print('-------------models/fuse_modules/where2comm_fuse.py Where2comm class')
         self.discrete_ratio = args['voxel_size'][0]
         self.downsample_rate = args['downsample_rate']
 

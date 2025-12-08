@@ -17,6 +17,7 @@ from opencood.models.sub_modules.downsample_conv import DownsampleConv
 class PointPillar(nn.Module):
     def __init__(self, args):
         super(PointPillar, self).__init__()
+        print('-------------models/point_pillar.py PointPillar class')
 
         # PIllar VFE
         self.pillar_vfe = PillarVFE(args['pillar_vfe'],

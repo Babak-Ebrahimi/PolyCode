@@ -8,9 +8,9 @@ comm_range: 70
 
 yaml_parser: "load_pp_vn_pp_param"
 train_params:
-  batch_size: &batch_size 2
-  epoches: &epoches 40
-  eval_freq: 2
+  batch_size: &batch_size 1
+  epoches: &epoches 36
+  eval_freq: 3
   save_freq: 2
   max_cav: &max_cav 5
 
@@ -223,6 +223,9 @@ model:
       in_size: *s_k
       featrue_size: *s_q
       channel: *c_q
+      seg_num: 2
+      dict_size: 256
+      r: 3
       
     compressor_v:
       align_type: MaxPool2d
@@ -230,6 +233,9 @@ model:
       in_size: *s_v
       featrue_size: *s_q
       channel: *c_q
+      seg_num: 2
+      dict_size: 256
+      r: 3
     
 
     transformer:
@@ -261,6 +267,8 @@ loss:
       alpha: 0.25
       gamma: 2.0
       type: SigmoidFocalLoss
+      weight: 1.0
+    codebook:
       weight: 1.0
 
 

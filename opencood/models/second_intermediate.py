@@ -15,6 +15,7 @@ from opencood.models.sub_modules.att_bev_backbone  import AttBEVBackbone
 class SecondIntermediate(nn.Module):
     def __init__(self, args):
         super(SecondIntermediate, self).__init__()
+        print('-------------models/second_intermediate.py SecondIntermediate class')
 
         self.batch_size = args['batch_size']
         # mean_vfe

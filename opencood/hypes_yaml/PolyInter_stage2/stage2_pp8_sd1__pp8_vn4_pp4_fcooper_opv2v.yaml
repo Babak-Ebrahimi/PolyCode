@@ -8,10 +8,10 @@ comm_range: 70
 
 yaml_parser: "load_pp_sd_param"
 train_params:
-  batch_size: &batch_size 2
+  batch_size: &batch_size 1
   epoches: &epoches 35
-  eval_freq: 2
-  save_freq: 2
+  eval_freq: 4
+  save_freq: 4
   max_cav: &max_cav 5
 
 
@@ -113,7 +113,10 @@ postprocess:
 model:
   core_method: polyinter_stage2
   args:
-    pre_train_modules: checkpoints/stage1_pp8_vn4_pp4_fcooper_opv2v_2025_05_02_23_20_04/net_epoch_bestval_at29.pth #一阶段模型文件
+    #pre_train_modules: checkpoints/stage2_pp8_sd1__pp8_vn4_pp4_fcooper_opv2v_2025_10_03_07_08_08/net_epoch_bestval_at31.pth
+    pre_train_modules: checkpoints/stage1_pp8_vn4_pp4_fcooper_opv2v_2025_10_28_06_24_17/net_epoch_bestval_at31.pth
+    #pre_train_modules: checkpoints/stage1_pp8_vn4_pp4_fcooper_opv2v_2025_10_06_14_42_38/net_epoch_bestval_at5.pth
+#    pre_train_modules: checkpoints/stage1_pp8_vn4_pp4_fcooper_opv2v_2025_07_05_18_19_17/net_epoch_bestval_at19.pth #一阶段模型文件
 
     PROJ_QUERY: true
     USE_PRED: true  
@@ -203,6 +206,9 @@ model:
       in_size: *s_k
       featrue_size: *s_q
       channel: *c_q
+      seg_num: 2
+      dict_size: 128
+      r: 3
 
     transformer:
       num_layers: 1
@@ -228,6 +234,8 @@ loss:
       alpha: 0.25
       gamma: 2.0
       type: SigmoidFocalLoss
+      weight: 1.0
+    codebook:
       weight: 1.0
 
 

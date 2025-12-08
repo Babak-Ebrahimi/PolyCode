@@ -4,7 +4,7 @@
 
 import argparse
 import os
-import statistics
+import statistics,sys
 
 import torch
 from torch.utils.data import DataLoader, Subset
@@ -129,6 +129,7 @@ def main():
             # reset loss computation logic
             
             final_loss = criterion(ouput_dict, batch_data['ego']['label_dict'])
+            #sys.exit('----------------------------------------end--------------------------')
             criterion.logging(epoch, i, len(train_loader), writer, pbar=pbar2)
 
             if supervise_single_flag:

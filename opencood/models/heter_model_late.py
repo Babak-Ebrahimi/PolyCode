@@ -16,6 +16,7 @@ import importlib
 class HeterModelLate(nn.Module):
     def __init__(self, args):
         super(HeterModelLate, self).__init__()
+        print('-------------models/heter_model_late.py HeterModelLate class')
         modality_name_list = list(args.keys())
         modality_name_list = [x for x in modality_name_list if x.startswith("m") and x[1:].isdigit()] 
         self.modality_name_list = modality_name_list

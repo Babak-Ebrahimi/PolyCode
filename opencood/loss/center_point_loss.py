@@ -39,6 +39,7 @@ class GaussianFocalLoss(nn.Module):
         self.gamma = gamma
         self.reduction = reduction
         self.loss_weight = loss_weight
+        print('-------------center_point_loss.py GaussianFocalLoss class initialization')
 
     def forward(self,
                 pred,
@@ -74,6 +75,7 @@ class GaussianFocalLoss(nn.Module):
         return loss_reg
 
 def gaussian_focal_loss(pred, gaussian_target, alpha=2.0, gamma=4.0):
+    print('-------------center_point_loss.py Gaussian_focal_loss function')
     """`Focal Loss <https://arxiv.org/abs/1708.02002>`_ for targets in gaussian
     distribution.
 
@@ -143,6 +145,7 @@ class RegLoss(nn.Module):
     '''
     def __init__(self):
         super(RegLoss, self).__init__()
+        print('-------------center_point_loss.py RegLoss class')
     
     def forward(self, output, mask, ind, target):
         pred = _transpose_and_gather_feat(output, ind)
@@ -162,6 +165,7 @@ class FastFocalLoss(nn.Module):
     '''
     def __init__(self):
         super(FastFocalLoss, self).__init__()
+        print('-------------center_point_loss.py FastFocalLoss class initilization')
 
     def forward(self, out, target, ind, mask, cat):
         '''
@@ -188,6 +192,7 @@ class FastFocalLoss(nn.Module):
 class CenterPointLoss(nn.Module):
     def __init__(self, args):
         super(CenterPointLoss, self).__init__()
+        print('-------------center_point_loss.py CenterPointLoss class initilization')
 
         self.cls_weight = args['cls_weight']
         self.loc_weight = args['loc_weight']
@@ -673,6 +678,7 @@ def gaussian_focal_loss(pred, gaussian_target, alpha=2.0, gamma=4.0):
         gamma (float, optional): The gamma for calculating the modulating
             factor. Defaults to 4.0.
     """
+    print('-------------center_point_loss.py gaussian_focal_loss function')
     eps = 1e-12
     device = pred.device
     pos_weights = gaussian_target.eq(1)
@@ -694,6 +700,7 @@ def l1_loss(pred, target):
     Returns:
         torch.Tensor: Calculated loss
     """
+    print('-------------center_point_loss.py l1_loss function')
     device = pred.device
     target = target.to(device)
     assert pred.size() == target.size() and target.numel() > 0

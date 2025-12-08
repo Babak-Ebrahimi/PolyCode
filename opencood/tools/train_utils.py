@@ -776,7 +776,9 @@ def create_loss(hypes):
     """
     loss_func_name = hypes['loss']['core_method']
     loss_func_config = hypes['loss']['args']
-
+    print('loss_func_name',loss_func_name)
+    print('loss_func_config',loss_func_config)
+    print("opencood.loss." + loss_func_name)
     loss_filename = "opencood.loss." + loss_func_name
     loss_lib = importlib.import_module(loss_filename)
     loss_func = None

@@ -11,6 +11,7 @@ import torch
 import open3d as o3d
 from torch.utils.data import DataLoader, Subset
 import numpy as np
+import sys
 import opencood.hypes_yaml.yaml_utils as yaml_utils
 from opencood.tools import train_utils, inference_utils
 from opencood.data_utils.datasets import build_dataset
@@ -191,7 +192,9 @@ def main():
     np.random.seed(303)
     
     # build dataset for each noise setting
-    print('Dataset Building')
+    # print('Dataset Building')
+    # print('hypes',hypes)
+    # sys.exit()
     opencood_dataset = build_dataset(hypes, visualize=True, train=False)
     # opencood_dataset_subset = Subset(opencood_dataset, range(640,2100))
     # data_loader = DataLoader(opencood_dataset_subset,

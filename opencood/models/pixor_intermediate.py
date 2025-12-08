@@ -17,6 +17,7 @@ class BackBoneIntermediate(BackBone):
         super(BackBoneIntermediate, self).__init__(block,
                                                    num_block,
                                                    geom, use_bn)
+        print('-------------models/pixor_Intermediate.py BackBoneIntermediate class')
 
         self.fusion_net3 = AttFusion(192)
         self.fusion_net4 = AttFusion(256)
@@ -57,6 +58,7 @@ class PIXORIntermediate(nn.Module):
 
     def __init__(self, args):
         super(PIXORIntermediate, self).__init__()
+        print('-------------models/pixor_Intermediate.py PIXORIntermediate class')
         geom = args["geometry_param"]
         use_bn = args["use_bn"]
         self.backbone = BackBoneIntermediate(Bottleneck, [3, 6, 6, 3],

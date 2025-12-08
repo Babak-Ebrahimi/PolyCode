@@ -19,6 +19,7 @@ class PointPillarBaselineMultiscale(nn.Module):
     """
     def __init__(self, args):
         super(PointPillarBaselineMultiscale, self).__init__()
+        print('-------------models/point_pillar_baseline_multiscale.py PointPillarBaselineMultiscale class')
 
         self.pillar_vfe = PillarVFE(args['pillar_vfe'],
                                     num_point_features=4,

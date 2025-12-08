@@ -275,6 +275,7 @@ class PIXOR(nn.Module):
 
     def __init__(self, args):
         super(PIXOR, self).__init__()
+        print('-------------models/pixor.py PIXOR class')
         geom = args["geometry_param"]
         use_bn = args["use_bn"]
         self.backbone = BackBone(Bottleneck, [3, 6, 6, 3], geom, use_bn)

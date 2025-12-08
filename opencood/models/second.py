@@ -14,6 +14,7 @@ from opencood.models.sub_modules.base_bev_backbone import BaseBEVBackbone
 class Second(nn.Module):
     def __init__(self, args):
         super(Second, self).__init__()
+        print('-------------models/second.py Second class')
 
         # mean_vfe
         self.mean_vfe = MeanVFE(args['mean_vfe'], 4)

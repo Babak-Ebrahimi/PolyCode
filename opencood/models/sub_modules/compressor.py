@@ -42,8 +42,8 @@ class ShrinkandPadding(nn.Module):
         super(ShrinkandPadding, self).__init__()
         self.shrink_rate = shrink_rate
         self.pad_sequence = pad_sequence
-        print("shrink_rate", shrink_rate)
-        print("pad_sequence", pad_sequence)
+        #print("shrink_rate", shrink_rate)
+        #print("pad_sequence", pad_sequence)
     
     def forward(self, x: torch.Tensor):
         x = F.max_pool2d(x, kernel_size=self.shrink_rate, stride=self.shrink_rate, return_indices=False)
@@ -61,9 +61,9 @@ class simple_align(nn.Module):
         h2 = args["featrue_size"][0]
         w2 = args["featrue_size"][1]
         align_type = args["align_type"]
-        print("in size:", h1, w1)
-        print("out_size:", h2, w2)
-        print("align_type:", align_type)
+        # print("in size:", h1, w1)
+        # print("out_size:", h2, w2)
+        # print("align_type:", align_type)
         if align_type == 'ShrinkandPadding':
             self.max_pooling = ShrinkandPadding(args["shrink_rate"],
                                                 args['pad_sequence'])

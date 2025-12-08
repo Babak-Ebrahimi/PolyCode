@@ -17,6 +17,7 @@ class CrossAttention(nn.Module):
         self, dim, heads, dim_head, qkv_bias=False, rel_pos_emb=False, norm=nn.LayerNorm
     ):
         super().__init__()
+        print('-------------models/fuse_modules/wg_fusion_modules.py CrossAttention class')
 
         self.scale = dim_head**-0.5
 
@@ -104,6 +105,7 @@ class CrossAttention(nn.Module):
 class Attention(nn.Module):
     def __init__(self, dim, dim_head=32, dropout=0.0, window_size=7):
         super().__init__()
+        print('-------------models/fuse_modules/wg_fusion_modules.py Attention class')
         assert (
             dim % dim_head
         ) == 0, "dimension should be divisible by dimension per head"
@@ -183,6 +185,7 @@ class SwapFusionBlock(nn.Module):
 
     def __init__(self, input_dim, mlp_dim, dim_head, window_size, drop_out):
         super(SwapFusionBlock, self).__init__()
+        print('-------------models/fuse_modules/wg_fusion_modules.py SwapFusionBlock class')
         # b = batch * max_cav
         self.block = nn.Sequential(
             # window attention, innner window
@@ -217,6 +220,7 @@ class CrossDomainSwapFusionBlock(nn.Module):
 
     def __init__(self, dim, dim_heads, heads, qkv_bias, win_size):
         super(CrossDomainSwapFusionBlock, self).__init__()
+        print('-------------models/fuse_modules/wg_fusion_modules.py CrossDomainSwapFusionBlock class')
         self.win_size = win_size
 
         self.prenorm = nn.LayerNorm(dim)
@@ -276,6 +280,7 @@ class CrossDomainSwapFusionBlock(nn.Module):
 class CrossDomainFusionEncoder(nn.Module):
     def __init__(self, args):
         super(CrossDomainFusionEncoder, self).__init__()
+        print('-------------models/fuse_modules/wg_fusion_modules.py CrossDomainFusionEncoder class')
 
         self.layers = nn.ModuleList([])
         self.depth = args["depth"]
@@ -347,6 +352,7 @@ class SwapFusionEncoder(nn.Module):
 
     def __init__(self, args):
         super(SwapFusionEncoder, self).__init__()
+        print('-------------models/fuse_modules/wg_fusion_modules.py SwapFusionEncoder class')
 
         self.layers = nn.ModuleList([])
         self.depth = args["depth"]
@@ -392,6 +398,7 @@ class VallianceCrossAttention(nn.Module):
         self, dim, heads, dim_head, qkv_bias=False, rel_pos_emb=False, norm=nn.LayerNorm
     ):
         super().__init__()
+        print('-------------models/fuse_modules/wg_fusion_modules.py VallianceCrossAttention class')
 
         self.scale = dim_head**-0.5
 
@@ -470,6 +477,7 @@ class VallianceCrossDomainSwapFusionBlock(nn.Module):
                  win_size
                  ):
         super(VallianceCrossDomainSwapFusionBlock, self).__init__()
+        print('-------------models/fuse_modules/wg_fusion_modules.py VallianceCrossDomainSwapFusionBlock class')
         self.win_size = win_size
 
         self.prenorm1 = nn.LayerNorm(dim)
@@ -543,6 +551,7 @@ class VallianceCrossDomainSwapFusionBlock(nn.Module):
 class VallianceFiller(nn.Module):
     def __init__(self, args):
         super(VallianceFiller, self).__init__()
+        print('-------------models/fuse_modules/wg_fusion_modules.py VallianceFiller class')
 
         self.layers = nn.ModuleList([])
         self.depth = args["depth"]
@@ -578,6 +587,7 @@ class VallianceFiller(nn.Module):
 class Filler(nn.Module):
     def __init__(self, args):
         super(Filler, self).__init__()
+        print('-------------models/fuse_modules/wg_fusion_modules.py Filler class')
 
         self.layers = nn.ModuleList([])
         self.depth = args["depth"]
@@ -621,7 +631,7 @@ class Filler(nn.Module):
 class ConverterBlock(nn.Module):
     def __init__(self, input_dim, mlp_dim, heads, window_size, drop_out) -> None:
         super(ConverterBlock, self).__init__()
-        
+        print('-------------models/fuse_modules/wg_fusion_modules.py ConverterBlock class')
         dim_head =  input_dim // heads 
         
         self.window_size = window_size
@@ -684,6 +694,7 @@ class Converter_perdimlp(nn.Module):
 
     def __init__(self, args):
         super(Converter_perdimlp, self).__init__()
+        print('-------------models/fuse_modules/wg_fusion_modules.py Converter_perdimlp class')
 
         self.layers = nn.ModuleList([])
         self.num_blocks = args["num_of_blocks"]
@@ -730,6 +741,7 @@ class Converter(nn.Module):
 
     def __init__(self, args):
         super(Converter, self).__init__()
+        print('-------------models/fuse_modules/wg_fusion_modules.py Converter class')
 
         self.layers = nn.ModuleList([])
         self.depth = args["num_of_blocks"]
@@ -774,6 +786,7 @@ class Converter(nn.Module):
 class CrossdomianConverter(nn.Module):
     def __init__(self, args):
         super(CrossdomianConverter, self).__init__()
+        print('-------------models/fuse_modules/wg_fusion_modules.py CrossdomainConverter class')
 
         self.layers = nn.ModuleList([])
         self.depth = args["num_of_blocks"]

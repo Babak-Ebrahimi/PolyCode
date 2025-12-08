@@ -12,6 +12,7 @@ import torch.nn.functional as F
 class VoxelNetLoss(nn.Module):
     def __init__(self, args):
         super(VoxelNetLoss, self).__init__()
+        print('-------------voxel_net_loss.py VoxelNetLoss class')
         self.smoothl1loss = nn.SmoothL1Loss(size_average=False)
         self.alpha = args['alpha']
         self.beta = args['beta']

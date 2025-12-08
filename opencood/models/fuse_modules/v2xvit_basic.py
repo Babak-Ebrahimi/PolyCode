@@ -11,6 +11,7 @@ from opencood.models.sub_modules.torch_transformation_utils import \
 class STTF(nn.Module):
     def __init__(self, args):
         super(STTF, self).__init__()
+        print('-------------models/fuse_modules/v2xvit_basic.py STTF class')
         self.discrete_ratio = args['voxel_size'][0]
         self.downsample_rate = args['downsample_rate']
 
@@ -39,6 +40,7 @@ class RelTemporalEncoding(nn.Module):
 
     def __init__(self, n_hid, RTE_ratio, max_len=100, dropout=0.2):
         super(RelTemporalEncoding, self).__init__()
+        print('-------------models/fuse_modules/v2xvit_basic.py RelTemporalEncoding class')
         position = torch.arange(0., max_len).unsqueeze(1)
         div_term = torch.exp(torch.arange(0, n_hid, 2) *
                              -(math.log(10000.0) / n_hid))
@@ -62,6 +64,7 @@ class RelTemporalEncoding(nn.Module):
 class RTE(nn.Module):
     def __init__(self, dim, RTE_ratio=2):
         super(RTE, self).__init__()
+        print('-------------models/fuse_modules/v2xvit_basic.py RTE class')
         self.RTE_ratio = RTE_ratio
 
         self.emb = RelTemporalEncoding(dim, RTE_ratio=self.RTE_ratio)
@@ -82,6 +85,7 @@ class RTE(nn.Module):
 class V2XFusionBlock(nn.Module):
     def __init__(self, num_blocks, cav_att_config, pwindow_config):
         super().__init__()
+        print('-------------models/fuse_modules/v2xvit_basic.py V2XFusionBlock class')
         # first multi-agent attention and then multi-window attention
         self.layers = nn.ModuleList([])
         self.num_blocks = num_blocks
@@ -123,6 +127,7 @@ class V2XFusionBlock(nn.Module):
 class V2XTEncoder(nn.Module):
     def __init__(self, args):
         super().__init__()
+        print('-------------models/fuse_modules/v2xvit_basic.py V2XTEncoder class')
 
         cav_att_config = args['cav_att_config']
         pwindow_att_config = args['pwindow_att_config']
@@ -181,6 +186,7 @@ class V2XTEncoder(nn.Module):
 class V2XTransformer(nn.Module):
     def __init__(self, args):
         super(V2XTransformer, self).__init__()
+        print('-------------models/fuse_modules/v2xvit_basic.py V2XTransformer class')
 
         encoder_args = args['encoder']
         self.encoder = V2XTEncoder(encoder_args)

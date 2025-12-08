@@ -22,6 +22,7 @@ from icecream import ic
 class V2VNetFusion(nn.Module):
     def __init__(self, args):
         super(V2VNetFusion, self).__init__()
+        print('-------------models/fuse_modules/v2v_fuse.py V2VNetFusion class')
         
         in_channels = args['in_channels']
         H, W = args['conv_gru']['H'], args['conv_gru']['W'] # remember to modify for v2xsim dataset

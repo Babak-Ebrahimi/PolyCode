@@ -23,6 +23,7 @@ from matplotlib import pyplot as plt
 class LiftSplatShootIntermediate(LiftSplatShoot):
     def __init__(self, args): 
         super(LiftSplatShootIntermediate, self).__init__(args)
+        print('-------------models/lift_splat_shoot_intermediate.py LiftSplatShootIntermediate class')
 
         fusion_args = args['fusion_args']
         self.ms = args['fusion_args']['core_method'].endswith("ms")

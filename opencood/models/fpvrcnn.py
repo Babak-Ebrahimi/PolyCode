@@ -18,6 +18,7 @@ from opencood.models.sub_modules.torch_transformation_utils import warp_affine_s
 class FPVRCNN(nn.Module):
     def __init__(self, args):
         super(FPVRCNN, self).__init__()
+        print('-------------models/fpvrcnn.py FPVRCNN class')
         lidar_range = np.array(args['lidar_range'])
         grid_size = np.round((lidar_range[3:6] - lidar_range[:3]) /
                              np.array(args['voxel_size'])).astype(np.int64)

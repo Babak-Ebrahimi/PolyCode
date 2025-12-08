@@ -20,6 +20,7 @@ class CiassdLoss(nn.Module):
         ##
         self.num_cls = 2
         self.box_codesize = 7
+        print('-------------ciassed_loss.py Ciassed_loss class')
 
     def forward(self, output_dict, label_dict):
         """

@@ -22,6 +22,7 @@ import torchvision
 class HeterPyramidCollabLocalHead(nn.Module):
     def __init__(self, args):
         super(HeterPyramidCollabLocalHead, self).__init__()
+        print('-------------models/heter_pyramid_collab_localhead.py HeterPyramidCollabLocalHead class')
         self.args = args
         modality_name_list = list(args.keys())
         modality_name_list = [x for x in modality_name_list if x.startswith("m") and x[1:].isdigit()] 

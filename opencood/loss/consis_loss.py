@@ -12,6 +12,7 @@ class ConsisLoss(PointPillarPyramidLoss):
     def __init__(self, args):
         super().__init__(args)
         
+        print('-------------consis_loss.py ConsisLoss class')
         # # 默认不使用pub_codebook监督
         # self.pub_cb_supervise = False
         # if 'pub_cb_supervise' in args:

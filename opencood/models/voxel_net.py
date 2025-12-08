@@ -177,6 +177,7 @@ class RPN(nn.Module):
 class VoxelNet(nn.Module):
     def __init__(self, args):
         super(VoxelNet, self).__init__()
+        print('-------------models/voxel_net.py VoxelNet class')
         self.svfe = PillarVFE(args['pillar_vfe'],
                               num_point_features=4,
                               voxel_size=args['voxel_size'],

@@ -21,6 +21,7 @@ class CenterPointBaseline(nn.Module):
     """
     def __init__(self, args):
         super(CenterPointBaseline, self).__init__()
+        print('-------------models/center_point_baseline.py CenterPointBaseline class')
 
         self.pillar_vfe = PillarVFE(args['pillar_vfe'],
                                     num_point_features=4,

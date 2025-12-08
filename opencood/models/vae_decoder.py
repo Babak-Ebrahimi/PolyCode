@@ -3,6 +3,7 @@ from torch import nn
 class autoencoder(nn.Module):
     def __init__(self, args):
         super(autoencoder, self).__init__()
+        print('-------------models/vae_decoder.py autoencoder class')
         # self.encoder = nn.Sequential(
         #     nn.Conv2d(1, 16, 3, stride=3, padding=1),  # b, 16, 10, 10
         #     nn.ReLU(True),

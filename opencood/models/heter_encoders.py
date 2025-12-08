@@ -23,6 +23,7 @@ import matplotlib.pyplot as plt
 class PointPillar(nn.Module):
     def __init__(self, args):
         super(PointPillar, self).__init__()
+        print('-------------models/heter_encoders.py PointPillar class')
         grid_size = (np.array(args['lidar_range'][3:6]) - np.array(args['lidar_range'][0:3])) / \
                             np.array(args['voxel_size'])
         grid_size = np.round(grid_size).astype(np.int64)
@@ -53,6 +54,7 @@ class PointPillar(nn.Module):
 class SECOND(nn.Module):
     def __init__(self, args):
         super(SECOND, self).__init__()
+        print('-------------models/heter_encoders.py Second class')
         lidar_range = np.array(args['lidar_range'])
         grid_size = np.round((lidar_range[3:6] - lidar_range[:3]) /
                                 np.array(args['voxel_size'])).astype(np.int64)
@@ -84,6 +86,7 @@ class SECOND(nn.Module):
 class LiftSplatShoot(nn.Module):
     def __init__(self, args): 
         super(LiftSplatShoot, self).__init__()
+        print('-------------models/heter_encoders.py LiftSplatShoot class')
         self.grid_conf = args['grid_conf']   # 网格配置参数
         self.data_aug_conf = args['data_aug_conf']   # 数据增强配置参数
         dx, bx, nx = gen_dx_bx(self.grid_conf['xbound'],
@@ -470,6 +473,7 @@ class LiftSplatShoot(nn.Module):
 
 class LiftSplatShootVoxel(LiftSplatShoot):
     def voxel_pooling(self, geom_feats, x):
+        print('-------------models/heter_encoders.py LiftSplatShootVoxel class')
         # geom_feats: B x N x D x H x W x 3 (4 x 6 x 41 x 16 x 22 x 3), D is discretization in "UD" or "LID"
         # x: B x N x D x fH x fW x C(4 x 6 x 41 x 16 x 22 x 64), D is num_bins
 

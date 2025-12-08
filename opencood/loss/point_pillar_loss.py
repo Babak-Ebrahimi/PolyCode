@@ -14,6 +14,7 @@ from icecream import ic
 class PointPillarLoss(nn.Module):
     def __init__(self, args):
         super(PointPillarLoss, self).__init__()
+        print('-------------point_pillar_loss.py PointPillarLoss class')
         self.pos_cls_weight = args['pos_cls_weight']
 
         self.cls = args['cls']

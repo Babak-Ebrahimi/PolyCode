@@ -10,6 +10,7 @@ from opencood.loss.point_pillar_loss import PointPillarLoss
 class PointPillarDepthLoss(PointPillarLoss):
     def __init__(self, args):
         super().__init__(args)
+        print('-------------point_pillar_depth_loss.py PointPillarDepthLoss class')
         self.depth = args['depth']
 
 
@@ -143,6 +144,7 @@ class FocalLoss(nn.Module):
 
     def __init__(self, alpha, gamma = 2.0, reduction= 'none', smooth_target = False , eps = None) -> None:
         super().__init__()
+        print('-------------point_pillar_depth_loss.py FocalLoss class')
         self.alpha = alpha
         self.gamma = gamma
         self.reduction = reduction

@@ -26,6 +26,7 @@ import torchvision
 class HeterModelBaseline(nn.Module):
     def __init__(self, args):
         super(HeterModelBaseline, self).__init__()
+        print('-------------models/heter_model_baseline.py HeterModelBaseline class')
         self.args = args
         modality_name_list = list(args.keys())
         modality_name_list = [x for x in modality_name_list if x.startswith("m") and x[1:].isdigit()] 

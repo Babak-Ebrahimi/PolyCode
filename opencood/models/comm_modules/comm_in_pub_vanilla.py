@@ -20,7 +20,7 @@ from opencood.tools.feature_show import feature_show
 class ComminPubVanilla(nn.Module):
     def __init__(self, args, pub_codebook=None, init_codebook=None):
         super(ComminPubVanilla, self).__init__()
-        
+        print('-------------models/comm_modules/comm_in_pub_vanilla.py ComminPubVanilla class')
         self.dim_code = args['dim']
         self.comm_space = args['comm_space']
         

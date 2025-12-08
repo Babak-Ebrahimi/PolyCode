@@ -7,6 +7,7 @@ from opencood.tools.feature_show import feature_show
 class ContrastiveLoss(nn.Module):
     def __init__(self, args):
         super(ContrastiveLoss, self).__init__()
+        print('-------------contrastive_loss_copy.py ContrastiveLoss class')
         self.tau = args["tau"]
         self.max_voxel = args["max_voxel"]
         self.loss_dict = {}

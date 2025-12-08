@@ -23,6 +23,7 @@ import torchvision
 class HeterHealAdaptAligner(nn.Module):
     def __init__(self, args):
         super(HeterHealAdaptAligner, self).__init__()
+        print('-------------models/heter_heal_adapt_aligner.py HeterHealAdaptAligner class')
         self.args = args
         modality_name_list = list(args.keys())
         modality_name_list = [x for x in modality_name_list if x.startswith("m") and x[1:].isdigit()] 

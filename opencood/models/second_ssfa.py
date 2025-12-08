@@ -15,6 +15,7 @@ import numpy as np
 class SecondSSFA(nn.Module):
     def __init__(self, args):
         super(SecondSSFA, self).__init__()
+        print('-------------models/second_ssfa.py SecondSSFA class')
         lidar_range = np.array(args['lidar_range'])
         grid_size = np.round((lidar_range[3:6] - lidar_range[:3]) /
                              np.array(args['voxel_size'])).astype(np.int64)

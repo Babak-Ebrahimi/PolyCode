@@ -12,6 +12,7 @@ from opencood.tools.feature_show import feature_show
 class PointPillarPyramidLoss(PointPillarDepthLoss):
     def __init__(self, args):
         super().__init__(args)
+        print('-------------point_pillar_pyramid_loss.py PointPillarPyramidLoss class')
         self.pyramid = args['pyramid']
 
         # relative downsampled GT cls map from fused labels.

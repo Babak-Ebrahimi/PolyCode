@@ -13,6 +13,7 @@ import torch.nn.functional as F
 class PixorLoss(nn.Module):
     def __init__(self, args):
         super(PixorLoss, self).__init__()
+        print('-------------pixor_loss.py PixorLoss class')
         self.alpha = args["alpha"]
         self.beta = args["beta"]
         self.loss_dict = {}

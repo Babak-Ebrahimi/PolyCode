@@ -25,6 +25,7 @@ import torchvision
 class HomoCollab(nn.Module):
     def __init__(self, args):
         super(HomoCollab, self).__init__()
+        print('-------------models/homo_collab.py HomoCollab class')
         self.args = args
         
         modality_name = args['ego_modality']

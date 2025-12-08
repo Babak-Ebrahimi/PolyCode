@@ -35,6 +35,7 @@ def add_clone_modality_dict(output_dict, key, modality_dict):
 class HeterPyramidConsis(HeterNego):
     def __init__(self, args):
         super().__init__(args)
+        print('-------------models/heter_pyramid_consis.py HeterPyramidConsis class')
         self.args = args
         modality_name_list = list(args.keys())
         modality_name_list = [x for x in modality_name_list if x.startswith("m") and x[1:].isdigit()] 
