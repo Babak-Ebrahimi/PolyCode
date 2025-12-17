@@ -52,6 +52,8 @@ python opencood/tools/train.py --hypes_yaml ${CONFIG_FILE} [--model_dir  ${CHECK
 ```
 For example​​, when training with three agent types in Stage1 (pp8 (ego), vn4, pp4), execute the command:
 ```
+cd /media/babak/0bbeca15-45b5-4516-aa80-b282064bdd77/PolyCode
+export PYTHONPATH=$(pwd)
 python opencood/tools/train.py --hypes_yaml opencood/hypes_yaml/PolyCode_stage1/stage1_pp8_vn4_pp4_fcooper_opv2v.yaml
 ```
 
