@@ -65,7 +65,7 @@ For example​​, when training with three agent types in Stage1 (pp8 (ego), vn
 ```
 python opencood/tools/inference.py --model_dir checkpoints/stage1_pp8_vn4_pp4_fcooper_opv2v_2025_12_07_22_25_03/
 ```
-## PolyInter Stage2 Training
+## PolyCode Stage2 Training
 Execute the following command to start Stage2 training:
 ```
 python opencood/tools/train.py --hypes_yaml ${CONFIG_FILE} [--model_dir  ${CHECKPOINT_FOLDER} --half]
